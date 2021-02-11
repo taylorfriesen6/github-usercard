@@ -57,8 +57,54 @@ const followersArray = [];
     </div>
 */
 
-function displayUser(user) {
-  
+function makeCard(user) {
+  const card = document.createElement('div');
+  card.classList.add('card');
+
+  const avatar = document.createElement('img');
+  avatar.setAttribute('src', user.avatar_url);
+  card.append(avatar);
+
+  const cardInfo = document.createElement('div');
+  cardInfo.classList.add('card-info');
+  card.append(cardInfo);
+
+  const name = document.createElement('h3');
+  name.classList.add('name');
+  name.textContent = user.name;
+  cardInfo.append(name);
+
+  const username = document.createElement('p');
+  username.classList.add('username');
+  username.textContent = user.login;
+  cardInfo.append(username);
+
+  const location = document.createElement('p');
+  location.textContent = `Location: ${user.location}`;
+  cardInfo.append(location);
+
+  const profile = document.createElement('p');
+  profile.textContent = 'Profile: ';
+  cardInfo.append(profile);
+
+  const profileLink = document.createElement('a');
+  profileLink.setAttribute('src', user.html_url);
+  profileLink.textContent = user.html_url;
+  profile.append(profileLink);
+
+  const following = document.createElement('p');
+  following.textContent = `Following: ${user.following}`;
+  cardInfo.append(following);
+
+  const followers = document.createElement('p');
+  followers.textContent = `Followers: ${user.followers}`;
+  cardInfo.append(followers);
+
+  const bio = document.createElement('p');
+  bio.textContent = `Bio: ${user.bio}`;
+  cardInfo.append(bio);
+
+  return card;
 }
 
 /*
